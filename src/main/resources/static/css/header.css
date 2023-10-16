@@ -20,7 +20,7 @@ right:3rem;
 
 .nav-btn-cont{
 width:100vw;
-height:5rem;
+height:3rem;
 text-align:center;
 padding: 5px 5px 5px 5px;
 }
@@ -28,7 +28,20 @@ padding: 5px 5px 5px 5px;
 .nav-btn-cont li{
 display: inline-block;
 }
+
 .nav-btn-cont li a{
 border:none;
 outline:none;
+font-style:bold;
+font-size:25px;
+padding: 5px 5px 5px 5px;
+}
+
+.cur-page{
+text-decoration: underline;
+text-decoration-color: #00A9CE;
+}
+
+.inactive-page{
+text-decoration: none;
 }
