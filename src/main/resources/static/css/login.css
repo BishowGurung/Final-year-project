@@ -1,0 +1,20 @@
+.news-display{
+width:62vw;
+height: 65vh;
+display: inline-block;
+}
+
+.login-form{
+width:33vw;
+height: 65vh;
+padding-left:2px;
+display: inline-block;
+border-left: 1.5px solid #00A9CE;
+position:absolute;
+right:1rem;
+}
+
+sec-container{
+float: left;
+text-align:center;
+}
