@@ -37,6 +37,11 @@ font-size:25px;
 padding: 5px 5px 5px 5px;
 }
 
+.nav-btn-cont li a:hover{
+transition: 0.2s;
+color:#00A9CE;
+}
+
 .cur-page{
 text-decoration: underline;
 text-decoration-color: #00A9CE;
