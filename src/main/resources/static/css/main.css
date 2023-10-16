@@ -1,4 +1,15 @@
 h1 {
 background-color:red;
-color:red;
+}
+.heading{
+height:7 rem;
+width :100%;
+}
+.pri-background-color{
+background-color:#41B6E6;
+height:7 rem;
+width :100%;
+}
+.sec-background-color{
+background-color:#E8EDEE;
 }
