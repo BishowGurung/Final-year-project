@@ -1,0 +1,52 @@
+.heading1{
+height:5rem;
+width:100vw;
+padding: 5px 5px 5px 5px;
+}
+
+.head-container{
+height:10rem;
+width :100vw;
+padding: 0px 0px 7.5px 0px;
+}
+
+.h-btn-ctn{
+display:inline-block;
+float:right;
+position:absolute;
+top:1.75rem;
+right:3rem;
+}
+
+.nav-btn-cont{
+width:100vw;
+height:3rem;
+text-align:center;
+padding: 5px 5px 5px 5px;
+}
+
+.nav-btn-cont li{
+display: inline-block;
+}
+
+.nav-btn-cont li a{
+border:none;
+outline:none;
+font-style:bold;
+font-size:25px;
+padding: 5px 5px 5px 5px;
+}
+
+.nav-btn-cont li a:hover{
+transition: 0.2s;
+color:#00A9CE;
+}
+
+.cur-page{
+text-decoration: underline;
+text-decoration-color: #00A9CE;
+}
+
+.inactive-page{
+text-decoration: none;
+}

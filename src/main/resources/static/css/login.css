@@ -1,0 +1,63 @@
+.news-display{
+width:62vw;
+height: 65vh;
+display: inline-block;
+}
+
+.login-form{
+width:33vw;
+height: 65vh;
+padding-left:2px;
+display: inline-block;
+border-left: 1.5px solid #00A9CE;
+position:absolute;
+right:1rem;
+}
+
+sec-container{
+float: left;
+text-align:center;
+}
+
+
+.image-fader img {
+  position: absolute;
+  width:62vw;
+  height:65vh;
+  left:2rem;
+  animation-name: imagefade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+}
+
+@keyframes imagefade {
+  0% {
+    opacity:1;
+  }
+  17% {
+    opacity:1;
+  }
+  25% {
+    opacity:0;
+  }
+  92% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.image-fader img:nth-of-type(1) {
+  animation-delay: 6s;
+}
+.image-fader img:nth-of-type(2) {
+  animation-delay: 4s;
+}
+.image-fader img:nth-of-type(3) {
+  animation-delay: 2s;
+}
+.image-fader img:nth-of-type(4) {
+  animation-delay: 0;
+}
