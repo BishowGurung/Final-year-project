@@ -1,15 +1,31 @@
-h1 {
-background-color:red;
-}
-.heading{
-height:7 rem;
-width :100%;
-}
 .pri-background-color{
 background-color:#41B6E6;
-height:7 rem;
-width :100%;
 }
+
+.rmv-padd{
+padding: 0px 0px 0px 0px;
+}
+
 .sec-background-color{
 background-color:#E8EDEE;
+}
+
+.al-right{
+right:3rem;
+}
+
+.pri-button{
+width:4.5rem;
+height:2rem;
+background-color:#0072CE;
+color:#E8EDEE;
+border:none;
+border-radius:10px;
+}
+
+.pri-button:hover{
+transition: 0.2s;
+background-color: #41B6E6;
+font-size:115%;
+cursor: pointer;
 }
