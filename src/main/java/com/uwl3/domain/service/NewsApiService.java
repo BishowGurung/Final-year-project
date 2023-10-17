@@ -1,5 +1,7 @@
 package com.uwl3.domain.service;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.uwl3.domain.dao.HealthNews;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -45,6 +47,14 @@ public class NewsApiService {
             }
         }catch (Exception e){
             log.info("Rest Template Exception");
+        }
+    }
+
+    private void healthNews(String data){
+        try {
+            HealthNews healthNews = HealthNews.builder().build();
+        }catch (Exception e){
+            log.info("JSON error");
         }
     }
 }
