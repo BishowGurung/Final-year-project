@@ -18,7 +18,6 @@ right:3rem;
 width:4.5rem;
 height:2rem;
 background-color:#41B6E6;
-color:#E8EDEE;
 border:none;
 border-radius:10px;
 cursor: pointer;
@@ -34,4 +33,8 @@ hr.md{
 border: 1px solid #0072CE;
 border-radius: 1px;
 width:95vw;
+}
+
+.p-f-cl{
+color:#E8EDEE;
 }
