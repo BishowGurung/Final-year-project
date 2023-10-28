@@ -1,7 +1,10 @@
 package com.uwl3.domain.service;
 
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.HealthNews;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +25,11 @@ import java.util.List;
 public class NewsApiService {
 
     private RestTemplate restTemplate;
+    private NewsCache newsCache;
 
     String apiKey ="7f1b2f400c524ffc8b43b22a8eae42ac";
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 1 * * * *")
     public void getNewsFromApi(){
 
         try {
@@ -61,24 +65,45 @@ public class NewsApiService {
         try {
 
             List<HealthNews> healthNewsList = new ArrayList<>();
+
             JsonParser jsonParser = new JsonParser();
             JsonObject jsonObject = jsonParser.parse(data).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("articles");
-            jsonArray.forEach(jsonElement -> {
-                JsonObject jsonObject2 = jsonParser.parse(jsonElement.getAsString()).getAsJsonObject();
-                HealthNews healthNews = HealthNews.builder()
-                        .author(jsonObject2.get("author").getAsString())
-                        .content(jsonObject2.get("").getAsString())
-                        .description(jsonObject2.get("description").getAsString())
-                        .url(jsonObject2.get("url").getAsString())
-                        .source(jsonObject2.get("source").getAsString())
-                        .urlToImage(jsonObject2.get("urlToImage").getAsString())
-                        .publishedAt(jsonObject2.get("publishedAt").getAsString())
-                        .title(jsonObject2.get("title").getAsString()).build();
+
+            jsonArray.forEach(u->{
+
+                healthNewsList.add(
+                        HealthNews.builder()
+                                .author(getJsonValue("author",u.getAsJsonObject()))
+                                .source(getJsonValue("source",u.getAsJsonObject()))
+                                .content(getJsonValue("content",u.getAsJsonObject()))
+                                .description(getJsonValue("description",u.getAsJsonObject()))
+                                .title(getJsonValue("title",u.getAsJsonObject()))
+                                .urlToImage(getJsonValue("urlToImage",u.getAsJsonObject()))
+                                .publishedAt(getJsonValue("publishedAt",u.getAsJsonObject()))
+                                .url(getJsonValue("url",u.getAsJsonObject()))
+                        .build());
             });
             log.info(healthNewsList.size() +"");
+            newsCache.setHealthNewsList(healthNewsList);
         }catch (Exception e){
             log.info("JSON error");
         }
     }
+
+    private String getJsonValue(String value,JsonObject jsonObject){
+        try {
+            if(value.equals("source")){
+                JsonObject jsonObject1 = jsonObject.getAsJsonObject("source").getAsJsonObject();
+                return jsonObject1.get("name").getAsString();
+            }
+            return jsonObject.get(value).getAsString();
+        }catch (Exception e){
+            return  "";
+        }
+    }
+
+
+
+
 }
