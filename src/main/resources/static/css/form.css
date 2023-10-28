@@ -17,7 +17,6 @@ border-bottom: 2px solid #003087;
 
 .form-btn {
   background-color:#0072CE;
-  color:#E8EDEE;
   border:none;
   border-radius:10px;
   cursor: pointer;
@@ -54,9 +53,12 @@ span.psw {
   padding-top: 16px;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 900px) {
   span.psw {
      display: block;
      float: none;
+  }
+  .container {
+    padding: 16px 10px 0px 55px;
   }
 }
