@@ -1,0 +1,57 @@
+package com.uwl3.web;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.uwl3.domain.cache.NewsCache;
+import com.uwl3.domain.dao.HealthNews;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping
+public class ApiController {
+
+    @Autowired
+    private NewsCache newsCache;
+    @GetMapping(value = "/api/healthnews")
+    public String getHealthNews(){
+        if (newsCache.getHealthNewsList().isEmpty()){
+            Map<String,String> healthNews = new HashMap<>();
+            healthNews.put("source","Hindustan Times");
+            healthNews.put("title","LIVE: WHO receives estimates of some 1,000 bodies buried under rubble in Gaza - Hindustan Times");
+            healthNews.put("Description","Israel-Hamas war LIVE updates: Follow all the latest updates on the war in the Middle-Eastern region.");
+            healthNews.put("PublishedAt","2023-10-27T12:26:52Z");
+            healthNews.put("context","Israel-Hamas war LIVE updates: The Israeli military has been carrying out brief raids across the Gaza border to prepare for battlefield ahead of an expected large-scale ground incursion into the the … [+12335 chars]");
+            healthNews.put("urlToImage","https://www.hindustantimes.com/ht-img/img/2023/10/27/1600x900/TOPSHOT-PALESTINIAN-ISRAEL-CONFLICT-0_1698387971549_1698387988791.jpg");
+            healthNews.put("url","https://www.hindustantimes.com/world-news/israelhamas-war-live-updates-october-27-palestine-gaza-war-benjamin-netanyahu-israel-attack-101698366686195.html");
+            healthNews.put("author","HT News Desk");
+
+            Map<String,String> healthNews2 = new HashMap<>();
+            healthNews2.put("source","Hindustan Times");
+            healthNews2.put("title","LIVE: WHO receives estimates of some 1,000 bodies buried under rubble in Gaza - Hindustan Times");
+            healthNews2.put("Description","Israel-Hamas war LIVE updates: Follow all the latest updates on the war in the Middle-Eastern region.");
+            healthNews2.put("PublishedAt","2023-10-27T12:26:52Z");
+            healthNews2.put("context","Israel-Hamas war LIVE updates: The Israeli military has been carrying out brief raids across the Gaza border to prepare for battlefield ahead of an expected large-scale ground incursion into the the … [+12335 chars]");
+            healthNews2.put("urlToImage","https://www.hindustantimes.com/ht-img/img/2023/10/27/1600x900/TOPSHOT-PALESTINIAN-ISRAEL-CONFLICT-0_1698387971549_1698387988791.jpg");
+            healthNews2.put("url","https://www.hindustantimes.com/world-news/israelhamas-war-live-updates-october-27-palestine-gaza-war-benjamin-netanyahu-israel-attack-101698366686195.html");
+            healthNews2.put("author","HT News Desk");
+
+            JsonArray jsonArray = new JsonArray();
+            jsonArray.add(healthNews.toString());
+            jsonArray.add(healthNews2.toString());
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.add("news",jsonArray);
+
+            return jsonObject.toString();
+        }
+        return newsCache.getHealthNewsList().toString();
+    }
+}
