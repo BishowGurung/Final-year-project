@@ -29,6 +29,17 @@ function displayNews(data){
             jsonObject[key.replace("{","").replace("}","")] = value;
         })
 
+        var newscardt = "<div class='news-card'><div style='background-image: url("+jsonObject.urlToImage+")' class='news-img'></div>"
+
+        var newscardb = "<div class='news-body'><h5>"+jsonObject.title+"</h5><p>"+jsonObject.title+
+            "</p><p>Source:" +jsonObject.author+" - " + jsonObject.source +
+            "<span style='float: right'>Published at: "+ jsonObject.PublishedAt.substring(0,18)+"</span></p></div></div>" ;
+
+        var newscard = document.getElementById("healthNews-container");
+
+        $(".healthNews-container").append(newscardt+newscardb);
+
+
     })
 
 }

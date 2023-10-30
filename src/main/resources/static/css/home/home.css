@@ -1,6 +1,38 @@
 .sec-body{
     position:absolute;
     height:65vh;
-    width:85vw;
+    width:60vw;
     left:3.75rem;
+}
+.healthNews-container{
+    height: 100%;
+    width:100%;
+    overflow: auto;
+}
+.news-card{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+}
+.news-img{
+    height: 100%;
+    width: 11rem;
+    min-width: 5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.news-body{
+    height: 100%;
+    overflow: auto;
+    border-bottom: 1px solid #41B6E6;
+}
+.news-body h5{
+    margin: 0;
+    padding: 5px 0px 0px 10px;
+}
+.news-body p{
+    font-style: Sans-serif;
+    padding: 0px 0px 0px 10px;
+    font-size:12px;
+    margin: 0;
 }
