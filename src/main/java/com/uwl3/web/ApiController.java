@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping
@@ -51,7 +48,30 @@ public class ApiController {
             jsonObject.add("news",jsonArray);
 
             return jsonObject.toString();
+        }else {
+            List<HealthNews> healthNewsList = newsCache.getHealthNewsList();
+
+            JsonArray jsonArray = new JsonArray();
+
+            healthNewsList.forEach(healthNews -> {
+
+                Map<String,String> healthNewsMap = new HashMap<>();
+                healthNewsMap.put("source",healthNews.getSource());
+                healthNewsMap.put("title",healthNews.getTitle());
+                healthNewsMap.put("Description",healthNews.getDescription());
+                healthNewsMap.put("PublishedAt",healthNews.getPublishedAt());
+                healthNewsMap.put("context",healthNews.getContent());
+                healthNewsMap.put("urlToImage",healthNews.getUrlToImage().equals("")?"/img/mainlogo.png":healthNews.getUrlToImage());
+                healthNewsMap.put("url",healthNews.getUrl());
+                healthNewsMap.put("author",healthNews.getAuthor());
+
+                jsonArray.add(healthNewsMap.toString());
+            });
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.add("news",jsonArray);
+
+            return jsonObject.toString();
         }
-        return newsCache.getHealthNewsList().toString();
     }
 }

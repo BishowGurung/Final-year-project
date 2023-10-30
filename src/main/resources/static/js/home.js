@@ -17,7 +17,6 @@ function loadHomeBody(){
 function displayNews(data){
     var jsonObject = JSON.parse(data);
     var jsonArray = jsonObject["news"];
-
     jsonArray.forEach(function (healthData){
         var keyValuePairs = healthData.split(", ");
         var jsonObject ={};
@@ -34,12 +33,8 @@ function displayNews(data){
         var newscardb = "<div class='news-body'><h5>"+jsonObject.title+"</h5><p>"+jsonObject.title+
             "</p><p>Source:" +jsonObject.author+" - " + jsonObject.source +
             "<span style='float: right'>Published at: "+ jsonObject.PublishedAt.substring(0,18)+"</span></p></div></div>" ;
-
-        var newscard = document.getElementById("healthNews-container");
-
+        $(".healthNews-container").empty();
         $(".healthNews-container").append(newscardt+newscardb);
-
-
     })
 
 }

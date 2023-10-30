@@ -12,7 +12,9 @@
 .news-card{
     height: 5rem;
     width: 100%;
+    min-width: 30rem;
     display: flex;
+    border-bottom: 1px solid #41B6E6;
 }
 .news-img{
     height: 100%;
@@ -23,16 +25,18 @@
 }
 .news-body{
     height: 100%;
+    min-width: 30rem;
     overflow: auto;
-    border-bottom: 1px solid #41B6E6;
 }
 .news-body h5{
     margin: 0;
     padding: 5px 0px 0px 10px;
+    min-width: 30rem;
 }
 .news-body p{
     font-style: Sans-serif;
     padding: 0px 0px 0px 10px;
     font-size:12px;
+    min-width: 30rem;
     margin: 0;
 }
