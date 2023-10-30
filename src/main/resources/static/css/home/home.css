@@ -29,9 +29,13 @@
     height: 90%;
     padding: 5px;
     cursor: pointer;
-    border: 1px solid #00A9CE;
     background-color: #E8EDEE;
-
+    border-radius: 10px;
+    border-width: 0px;
+}
+.home-btn-container div button:hover{
+    background-color:#dcdcdc;
+    color: #41B6E6;
 }
 .healthNews-container{
     height: 100%;
@@ -52,6 +56,7 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 .news-body{
     height: 100%;
     width: 90%;
