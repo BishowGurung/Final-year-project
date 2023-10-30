@@ -4,6 +4,35 @@
     width:60vw;
     left:3.75rem;
 }
+.as-body{
+    position:absolute;
+    height:65vh;
+    width:30vw;
+    right: 2rem;
+}
+.home-btn-container{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.home-btn-container div{
+    width: 40%;
+    min-width: 5rem;
+    height: 40%;
+    padding: 5px;
+}
+.home-btn-container div button{
+    width: 90%;
+    min-width: 5rem;
+    height: 90%;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #00A9CE;
+    background-color: #E8EDEE;
+
+}
 .healthNews-container{
     height: 100%;
     width:100%;
