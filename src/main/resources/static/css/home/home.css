@@ -25,6 +25,7 @@
 }
 .news-body{
     height: 100%;
+    width: 90%;
     min-width: 30rem;
     overflow: auto;
 }
