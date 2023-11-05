@@ -31,9 +31,9 @@ function displayNews(data){
 
         var newscardt = "<div class='news-card'><div style='background-image: url("+jsonObject.urlToImage+")' class='news-img'></div>"
 
-        var newscardb = "<div class='news-body'><h5>"+jsonObject.title+"</h5><p>"+jsonObject.title+
+        var newscardb = "<div class='news-body'><h5>"+jsonObject.title+"</h5><p>"+jsonObject.Description+
             "</p><br><p>Source:" +jsonObject.author+" - " + jsonObject.source +
-            "<span style='float: right'>Published at: "+ jsonObject.PublishedAt.substring(0,18)+"</span></p></div></div>" ;
+            "<span style='float: right'>Published at: "+ jsonObject.PublishedAt.replace("}","").replace("Z","").replace("T"," ")+"</span></p></div></div>" ;
         $(".healthNews-container").append(newscardt+newscardb);
 
     })

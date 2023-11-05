@@ -43,6 +43,7 @@
     overflow: auto;
 }
 .news-card{
+    padding-top: 5px;
     height: 5rem;
     width: 100%;
     min-width: 30rem;
