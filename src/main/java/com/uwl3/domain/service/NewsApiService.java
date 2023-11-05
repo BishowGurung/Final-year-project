@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.HealthNews;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -25,11 +26,12 @@ import java.util.List;
 public class NewsApiService {
 
     private RestTemplate restTemplate;
+    @Autowired
     private NewsCache newsCache;
 
     String apiKey ="7f1b2f400c524ffc8b43b22a8eae42ac";
 
-    @Scheduled(cron = "0 1 * * * *")
+    @Scheduled(cron = "0 */5 * * * *")
     public void getNewsFromApi(){
 
         try {
@@ -87,7 +89,7 @@ public class NewsApiService {
             log.info(healthNewsList.size() +"");
             newsCache.setHealthNewsList(healthNewsList);
         }catch (Exception e){
-            log.info("JSON error");
+            log.info("JSON error" + e.toString());
         }
     }
 

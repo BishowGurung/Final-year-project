@@ -1,6 +1,77 @@
 .sec-body{
     position:absolute;
     height:65vh;
-    width:85vw;
+    width:60vw;
     left:3.75rem;
+}
+.as-body{
+    position:absolute;
+    height:65vh;
+    width:30vw;
+    right: 2rem;
+}
+.home-btn-container{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.home-btn-container div{
+    width: 40%;
+    min-width: 5rem;
+    height: 40%;
+    padding: 5px;
+}
+.home-btn-container div button{
+    width: 90%;
+    min-width: 5rem;
+    height: 90%;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #E8EDEE;
+    border-radius: 10px;
+    border-width: 0px;
+}
+.home-btn-container div button:hover{
+    background-color:#dcdcdc;
+    color: #41B6E6;
+}
+.healthNews-container{
+    height: 100%;
+    width:100%;
+    overflow: auto;
+}
+.news-card{
+    height: 5rem;
+    width: 100%;
+    min-width: 30rem;
+    display: flex;
+    border-bottom: 1px solid #41B6E6;
+}
+.news-img{
+    height: 100%;
+    width: 11rem;
+    min-width: 5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.news-body{
+    height: 100%;
+    width: 90%;
+    min-width: 30rem;
+    overflow: auto;
+}
+.news-body h5{
+    margin: 0;
+    padding: 5px 0px 0px 10px;
+    min-width: 30rem;
+}
+.news-body p{
+    font-style: Sans-serif;
+    padding: 0px 0px 0px 10px;
+    font-size:12px;
+    min-width: 30rem;
+    margin: 0;
 }

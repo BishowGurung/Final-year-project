@@ -14,7 +14,6 @@ padding: 0px 0px 7.5px 0px;
 display:inline-block;
 float:right;
 position:absolute;
-top:1.75rem;
 right:3rem;
 }
 
@@ -22,7 +21,7 @@ right:3rem;
 width:100vw;
 height:3rem;
 text-align:center;
-padding: 5px 5px 5px 5px;
+padding: 0px 5px 5px 5px;
 }
 
 .nav-btn-cont li{
