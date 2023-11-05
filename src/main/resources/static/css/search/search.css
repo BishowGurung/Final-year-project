@@ -29,6 +29,7 @@
     border-radius: 10px;
     background-color: #003087;
     color: #E8EDEE;
+    cursor: pointer;
 }
 .aside-search-result-list{
     height: 85%;
