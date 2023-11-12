@@ -5,6 +5,9 @@
     <link rel="icon" aria-label="tab favicon image" type="image/png" href="/img/mainlogo.png" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/search/search.css">
+    <script src="/js/search.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <title>AROGYA</title>
 
     <div class="head-container">
@@ -27,7 +30,17 @@
 
 </head>
 <body>
+<aside class="as-body">
+    <div class="query-search-bar">
+        <div class="form">
+            <input type="text" placeholder="Search..." name="querySearch" id="querySearch">
+            <button type="submit" onclick="getValue()"><i>Search</i></button>
+        </div>
+    </div><br><br>
+    <div class="aside-search-result-list">
 
+    </div>
 
+</aside>
 </body>
 </html>

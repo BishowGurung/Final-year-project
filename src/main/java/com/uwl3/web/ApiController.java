@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.HealthNews;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping
+@Slf4j
 public class ApiController {
 
     @Autowired
@@ -73,5 +75,10 @@ public class ApiController {
 
             return jsonObject.toString();
         }
+    }
+    @GetMapping(value = "/api/")
+    public String getHealthNews(String query){
+
+        return "Found";
     }
 }
