@@ -36,7 +36,7 @@ public class NhsApiService {
 
             HttpEntity<?> request = new HttpEntity<>(httpHeaders);
 
-            ResponseEntity<String> response = restTemplate.exchange(url + query.toLowerCase(), HttpMethod.GET,request,String.class);
+            ResponseEntity<String> response = restTemplate.exchange(url + query.toLowerCase().replaceAll(" ","-"), HttpMethod.GET,request,String.class);
 
 
             if(response.getStatusCode() == HttpStatus.OK) {
@@ -46,6 +46,7 @@ public class NhsApiService {
             }
         }catch (Exception e){
             log.info("Rest Template Exception");
+            return "<h1>No result found for "+ query +"</h3>";
         }
         return "";
     }
