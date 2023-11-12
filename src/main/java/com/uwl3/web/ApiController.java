@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.HealthNews;
+import com.uwl3.domain.service.NhsApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ public class ApiController {
 
     @Autowired
     private NewsCache newsCache;
+
+    @Autowired
+    private NhsApiService nhsApiService;
     @GetMapping(value = "/api/healthnews")
     public String getHealthNews(){
         if (newsCache.getHealthNewsList().isEmpty()){
@@ -78,7 +82,7 @@ public class ApiController {
     }
     @GetMapping(value = "/api/")
     public String getHealthNews(String query){
-
-        return "Found";
+        return nhsApiService.getHealthInfo(query);
     }
+
 }
