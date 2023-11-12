@@ -85,4 +85,36 @@ public class ApiController {
         return nhsApiService.getHealthInfo(query);
     }
 
+    @GetMapping(value = "/api/patient/")
+    public String getPatientDetail(String patientName){
+        Map<String,String> patientList = new HashMap<>();
+        patientList.put("Name","Brian Stuart");
+        patientList.put("Age","59");
+        patientList.put("Gender","Male");
+        patientList.put("Admission date","2023-10-27");
+        patientList.put("Admission Time","12:26:52");
+        patientList.put("Ward","Urology");
+        patientList.put("Bed number","777");
+        patientList.put("PatientID","1023545");
+
+        Map<String,String> patientList2 = new HashMap<>();
+        patientList2.put("Name","Harold Binny");
+        patientList2.put("Age","16");
+        patientList2.put("Gender","Male");
+        patientList2.put("Admission date","2023-11-27");
+        patientList2.put("Admission Time","1:26:52");
+        patientList2.put("Ward","Burn");
+        patientList2.put("Bed number","012");
+        patientList2.put("PatientID","9532000");
+
+        JsonArray jsonArray = new JsonArray();
+        jsonArray.add(patientList.toString());
+        jsonArray.add(patientList2.toString());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("patients",jsonArray);
+
+        return jsonObject.toString();
+    }
+
+
 }

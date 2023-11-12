@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/patient/patient.css">
+    <script src="/js/patient.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <title>AROGYA</title>
 
@@ -31,10 +32,10 @@
 <body>
 <aside class="as-body">
     <div class="patient-search-bar">
-                <input type="text" placeholder="Patient Name\Id..." name="patientSearch">
-                <button type="submit"><i>Search</i></button>
+                <input type="text" placeholder="Patient Name\Id..." id="patientSearch" name="patientSearch">
+                <button type="submit" onclick="searchPatient();"><i>Search</i></button>
     </div><br><br>
-    <div class="aside-patient-list">
+    <div id="aside-patient-list" class="aside-patient-list">
 
     </div>
 
