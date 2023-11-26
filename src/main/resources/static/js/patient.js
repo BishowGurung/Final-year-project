@@ -60,7 +60,7 @@ function formatPatientRecord(data){
             var value = parts[1];
             jsonObject[key.replace("{","").replace("}","")] = value.replace("{","").replace("}","")
         })
-        $(".aside-patient-list").append("<div>"+
+        $(".aside-patient-list").append("<div STYLE='font-size: 16px;font-family: sans-serif;'>"+
             "Patient ID : " + jsonObject.PatientID +"<br>"+
             "Name : " + jsonObject.Name +"<br>"+
             "Gender : " + jsonObject.Gender +"<br>"+
