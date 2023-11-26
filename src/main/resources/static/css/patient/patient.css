@@ -48,3 +48,41 @@
 .patient-card:hover{
     background-color: #41B6E6;
 }
+
+.sec-body-cont{
+    position:absolute;
+    height:65vh;
+    width:60vw;
+    left: 3rem;
+    min-width: 780px;
+}
+.p-h-rec-block{
+    width: 100%;
+    height: 33.33%;
+
+}
+.patient-rec-h{
+    height: 20%;
+    width: 100%;
+    margin: 0;
+    padding: 5px 5px 0px 5px;
+    border-bottom: 1px solid #41B6E6;
+}
+.patient-rec-b{
+    height: 75%;
+    width: 100%;
+    margin: 0;
+}
+.add-btn-p{
+    width:4.5rem;
+    height:2rem;
+    background-color:#0072CE;
+    border:none;
+    border-radius:10px;
+    cursor: pointer;
+    color: aliceblue;
+}
+.add-btn-p:hover{
+    transition: 0.2s;
+    background-color:#005EB8;
+}

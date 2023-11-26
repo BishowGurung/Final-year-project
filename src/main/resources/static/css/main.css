@@ -38,7 +38,13 @@ width:95vw;
 color:#E8EDEE;
 }
 
-.t-bold{
-font-style:bold;
+.s-f-cl{
+    color: #003087;
 }
 
+.t-bold{
+font-weight:bold;
+}
+body{
+    margin: 0;
+}
