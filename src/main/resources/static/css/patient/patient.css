@@ -13,27 +13,38 @@
     height: 2rem;
     padding-top: 10px;
 }
-.patient-search-bar form{
-    width: 90%;
-}
-.patient-search-bar form input{
+.patient-search-bar input{
     height: 100%;
     width: 80%;
     min-width: 6rem;
     border-radius: 10px;
     border: 1px solid #41B6E6;
 }
-.patient-search-bar form button{
+.patient-search-bar button{
     height: 100%;
     width: 4rem;
     border-radius: 10px;
     background-color: #003087;
     color: #E8EDEE;
+    cursor: pointer;
 }
 .aside-patient-list{
     height: 85%;
     width: 100%;
     padding-top: 10px;
     overflow: auto;
-    background-color: gainsboro;
+}
+.patient-card{
+    border: 1px solid #41B6E6;
+    width: 95%;
+    margin-top: 2px;
+    cursor: pointer;
+    transition:0.25s;
+    padding: 5px;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.patient-card:hover{
+    background-color: #41B6E6;
 }

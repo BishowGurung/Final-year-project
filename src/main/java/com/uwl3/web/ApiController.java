@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.HealthNews;
+import com.uwl3.domain.service.NhsApiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ public class ApiController {
 
     @Autowired
     private NewsCache newsCache;
+
+    @Autowired
+    private NhsApiService nhsApiService;
     @GetMapping(value = "/api/healthnews")
     public String getHealthNews(){
         if (newsCache.getHealthNewsList().isEmpty()){
@@ -78,7 +82,39 @@ public class ApiController {
     }
     @GetMapping(value = "/api/")
     public String getHealthNews(String query){
-
-        return "Found";
+        return nhsApiService.getHealthInfo(query);
     }
+
+    @GetMapping(value = "/api/patient/")
+    public String getPatientDetail(String patientName){
+        Map<String,String> patientList = new HashMap<>();
+        patientList.put("Name","Brian Stuart");
+        patientList.put("Age","59");
+        patientList.put("Gender","Male");
+        patientList.put("Admission date","2023-10-27");
+        patientList.put("Admission Time","12:26:52");
+        patientList.put("Ward","Urology");
+        patientList.put("Bed number","777");
+        patientList.put("PatientID","1023545");
+
+        Map<String,String> patientList2 = new HashMap<>();
+        patientList2.put("Name","Harold Binny");
+        patientList2.put("Age","16");
+        patientList2.put("Gender","Male");
+        patientList2.put("Admission date","2023-11-27");
+        patientList2.put("Admission Time","1:26:52");
+        patientList2.put("Ward","Burn");
+        patientList2.put("Bed number","012");
+        patientList2.put("PatientID","9532000");
+
+        JsonArray jsonArray = new JsonArray();
+        jsonArray.add(patientList.toString());
+        jsonArray.add(patientList2.toString());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("patients",jsonArray);
+
+        return jsonObject.toString();
+    }
+
+
 }

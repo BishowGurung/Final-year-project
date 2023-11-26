@@ -1,20 +1,14 @@
-.as-body{
-    position:absolute;
-    height:65vh;
-    width:30vw;
-    right: 2rem;
-    border-left: 1.5px solid #00A9CE;
-    padding-left: 2rem;
-}
 .query-search-bar{
     width: 100%;
     display: flex;
     justify-content: center;
     height: 2rem;
     padding-top: 10px;
+    padding-bottom: 1rem;
+    float: right;
 }
 .form{
-    width: 90%;
+    width: 50%;
 }
 .form input{
     height: 100%;
@@ -32,9 +26,12 @@
     cursor: pointer;
 }
 .aside-search-result-list{
-    height: 85%;
-    width: 100%;
-    padding-top: 10px;
+    height: 60vh;
+    width: 95%;
     overflow: auto;
-    background-color: gainsboro;
+}
+.nhs-api{
+    padding-left: 5%;
+    padding-top: 2%;
+    font-family: sans-serif;
 }

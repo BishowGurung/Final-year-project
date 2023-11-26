@@ -26,7 +26,7 @@ function displayNews(data){
             var parts = pairs.split("=");
             var key = parts[0];
             var value = parts[1];
-            jsonObject[key.replace("{","").replace("}","")] = value;
+            jsonObject[key.replace("{","").replace("}","")] = value.replace("{","").replace("}","");
         })
 
         var newscardt = "<div class='news-card'><div style='background-image: url("+jsonObject.urlToImage+")' class='news-img'></div>"
