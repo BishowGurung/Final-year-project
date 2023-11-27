@@ -1,4 +1,4 @@
-package com.uwl3.web;
+package com.uwl3.web.Controllers;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
