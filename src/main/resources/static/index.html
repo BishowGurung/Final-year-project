@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/form.css">
     <script src="/js/search.js"></script>
+    <script src="/js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <title>AROGYA</title>
 
@@ -61,12 +62,13 @@
 
                 <div class="container">
                     <label ><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" placeholder="Enter Username" name="uname" id="username" required>
 
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" placeholder="Enter Password" name="psw" id="password" required>
 
-                    <button class="form-btn p-f-cl" type="submit">Login</button>
+                    <button class="form-btn p-f-cl" onclick="authenticateUser()">Login</button>
+                    <button class="form-btn p-f-cl" onclick="createUser()">Create User</button>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>

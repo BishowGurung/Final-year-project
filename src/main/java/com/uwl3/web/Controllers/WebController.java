@@ -1,4 +1,4 @@
-package com.uwl3.web;
+package com.uwl3.web.Controllers;
 
 import com.uwl3.domain.dao.HealthNews;
 import org.springframework.core.io.Resource;
