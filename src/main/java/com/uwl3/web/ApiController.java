@@ -86,7 +86,7 @@ public class ApiController {
     }
 
     @GetMapping(value = "/api/patient/")
-    public String getPatientDetail(String patientName){
+    public String getPatient(String patientName){
         Map<String,String> patientList = new HashMap<>();
         patientList.put("Name","Brian Stuart");
         patientList.put("Age","59");
@@ -110,6 +110,27 @@ public class ApiController {
         JsonArray jsonArray = new JsonArray();
         jsonArray.add(patientList.toString());
         jsonArray.add(patientList2.toString());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("patients",jsonArray);
+
+        return jsonObject.toString();
+    }
+    @GetMapping(value = "/api/patientDetails/")
+    public String getPatientDetail(String patientId){
+        Map<String,String> patientDetail = new HashMap<>();
+        patientDetail.put("Name","Brian Stuart");
+        patientDetail.put("Age","59");
+        patientDetail.put("Gender","Male");
+        patientDetail.put("AdmissionDate","2023-10-27");
+        patientDetail.put("AdmissionTime","12:26:52");
+        patientDetail.put("Ward","Urology");
+        patientDetail.put("BedNumber","777");
+        patientDetail.put("PatientID","1023545");
+
+
+        JsonArray jsonArray = new JsonArray();
+        jsonArray.add(patientDetail.toString());
+
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("patients",jsonArray);
 
