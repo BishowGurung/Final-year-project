@@ -1,6 +1,5 @@
 package com.uwl3.web.Configurations;
 
-import com.uwl3.domain.dao.Employee;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

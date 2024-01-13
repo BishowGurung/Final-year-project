@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private int patientId;
     private String name;
     private int age;
@@ -26,4 +25,5 @@ public class Patient {
     private String admissionTime;
     private String ward;
     private int bedNumber;
+
 }

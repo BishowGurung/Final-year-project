@@ -19,7 +19,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(RegisterRequest request){
         var user = Employee.builder()
-                .userName(request.getUsername())
+                .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 
