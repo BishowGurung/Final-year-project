@@ -69,7 +69,19 @@
                 <button type="submit" onclick="searchPatient();"><i>Search</i></button>
     </div><br><br>
     <div id="aside-patient-list" class="aside-patient-list">
-
+        <div class="container">
+            <input type="text" placeholder="Enter patient name" name="name" id="name" required>
+            <input type="text" placeholder="Enter age" name="age" id="age" required>
+            <input type="text" placeholder="Enter gender" name="gender" id="gender" required>
+            <input type="text" placeholder="Enter admissionDate" name="admissionDate" id="admissionDate" required>
+            <input type="text" placeholder="Enter admissionTime" name="admissionTime" id="admissionTime" required>
+            <input type="text" placeholder="Enter ward" name="ward" id="ward" required>
+            <input type="text" placeholder="Enter bedNumber" name="ward" id="bedNumber" required>
+            <button class="form-btn p-f-cl" style="width:10rem;height: 3rem;font-size: 12px;font-weight: bold;" onclick="authenticateUser()">ADD PATIENT</button><br><br>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
     </div>
 
 </aside>
