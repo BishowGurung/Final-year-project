@@ -1,4 +1,4 @@
-package com.uwl3.web.Auth;
+package com.uwl3.web.Controllers.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-    private  String token;
+public class CreateUser {
+    private String username;
+    private String password;
 }
