@@ -1,4 +1,4 @@
-package com.uwl3.web.Auth;
+package com.uwl3.web.Controllers.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class AuthenticateUser {
     private String username;
     private String password;
 }
