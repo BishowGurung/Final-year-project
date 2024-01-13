@@ -72,3 +72,6 @@ function formatPatientRecord(data){
             "</div>");
     })
 }
+function addPatient(){
+
+}
