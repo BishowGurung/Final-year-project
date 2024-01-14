@@ -2,6 +2,8 @@ package com.uwl3.web.Controllers;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.uwl3.Blockchain.Block;
+import com.uwl3.Blockchain.BlockchainLedger;
 import com.uwl3.domain.cache.NewsCache;
 import com.uwl3.domain.dao.Patient;
 import com.uwl3.domain.dao.HealthNews;
@@ -42,6 +44,8 @@ public class ApiController {
     PulseReader pulseReader;
     @Autowired
     RespiratoryReader respiratoryReader;
+    @Autowired
+    BlockchainLedger blockchainLedger;
 
     @GetMapping(value = "/api/healthnews")
     public String getHealthNews(){
@@ -190,10 +194,19 @@ public class ApiController {
                 .admissionDate(LocalDate.now().toString())
                 .admissionTime(LocalDate.now().toString())
                 .build();
-        log.info("Patient Registered : " + patient.toString());
+
         patientRepository.save(patient);
-       // patientRepository.save(patient);
-        log.info("Patient Registered : " + patient.toString());
+
+        String previoushash="";
+        List< Block> blockList = blockchainLedger.getBlockchain();
+        if (blockList.size()>=1){
+            previoushash = blockList.get(blockList.size()-1).getHash();
+        }
+        Block block = new Block(patient.toString(),previoushash);
+        blockList.add(block);
+        blockchainLedger.setBlockchain(blockList);
+        log.info("Data has been registered in blockchain ledger at node " + blockList.size() + ". value : " + block.getHash());
+
     }
 
 

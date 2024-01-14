@@ -1,7 +1,12 @@
 package com.uwl3.Blockchain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Getter
+@Setter
 public class Block {
     public String hash;
     public String previousHash;
