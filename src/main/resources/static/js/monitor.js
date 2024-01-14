@@ -16,7 +16,7 @@ function formatPatientMonitor(data){
             "<span style='width: 2px;'></span><div className='p-mon'>"+
                 "<div className='p-mon-img' style='background-image: url('../img/mainlogo.png');width: 10rem;height: 9rem;padding: 0.5rem 0rem;background-size:contain;background-repeat: no-repeat;'></div>"+
                     "<div style='width: 20rem;height: 9rem;background-color: antiquewhite;padding: 0.5rem 1rem;font-size: 13px;font-weight: bold;'>"+
-                    "<p style='width: 90%;'>Name: "+jsonObject.Name+"</p>"+
+                    "<p style='width: 90%;'>Name: "+jsonObject.Name+"<span style='float: right;'>"+jsonObject.ID+"</span></p>"+
                     "<p style='width: 90%;'><span>Blood Pressure : </span><span style='color: red;right: 0;'>"+jsonObject.BloodPressure+"</span></p>"+
                     "<p style='width: 90%;'><span>Body Temperature : </span><span style='color: red;right: 0;'>"+jsonObject.BodyTemperature+"</span></p>"+
                     "<p style='width: 90%;'><span>Pulse : </span><span style='color: red;right: 0;'>"+jsonObject.Pulse+"</span></p>"+

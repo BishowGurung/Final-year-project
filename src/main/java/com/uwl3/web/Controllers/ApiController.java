@@ -164,6 +164,7 @@ public class ApiController {
         patientList.forEach(patient -> {
             Map<String,String> patientDetail = new HashMap<>();
             patientDetail.put("Name",patient.getName());
+            patientDetail.put("ID",String.valueOf(patient.getPatientId()));
             patientDetail.put("BloodPressure",bloodPressureReader.getBloodPressure());
             patientDetail.put("BodyTemperature", bodyTemperatureReader.getBodyTemperature());
             patientDetail.put("Pulse",pulseReader.getPulse());
@@ -180,7 +181,7 @@ public class ApiController {
     @GetMapping(value ="/addPatient",produces="application/json")
     public void addPatient( String Name,String Age, String Gender, String Ward,String BedNumber){
         Patient patient = Patient.builder()
-                .patientId((int)Math.random())
+                .patientId(Integer.valueOf(String.valueOf((((Math.random() * (1000 - 0)) + 0))).substring(0,2)))
                 .name(Name)
                 .age(Integer.valueOf(Age))
                 .gender(Gender)
@@ -189,6 +190,7 @@ public class ApiController {
                 .admissionDate(LocalDate.now().toString())
                 .admissionTime(LocalDate.now().toString())
                 .build();
+        log.info("Patient Registered : " + patient.toString());
         patientRepository.save(patient);
        // patientRepository.save(patient);
         log.info("Patient Registered : " + patient.toString());
