@@ -1,0 +1,39 @@
+.p-mon-container{
+    min-width: 800px;
+    width: 92.5vw;
+    height: 70vh;
+    margin: 2rem 2rem 2rem 3.5vw;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.p-mon{
+    width: 30rem;
+    height: 10rem;
+    color: #003087;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.p-mon-img{
+    width: 10rem;
+    height: 9rem;
+    padding: 0.5rem 0rem;
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.p-mon-content{
+    width: 20rem;
+    height: 9rem;
+    background-color: antiquewhite;
+    padding: 0.5rem 0rem;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.25s;
+}
+.p-mon-content:hover{
+    cursor: pointer;
+    background-color: wheat;
+}
+

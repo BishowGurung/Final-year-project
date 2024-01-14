@@ -5,6 +5,9 @@
     <link rel="icon" aria-label="tab favicon image" type="image/png" href="/img/mainlogo.png" />
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/Monitor/monitor.css">
+    <script src="/js/monitor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <title>AROGYA</title>
 
     <div class="head-container">
@@ -25,9 +28,12 @@
         </ul>
     </div>
 
-</head>
-<body>
 
+</head>
+<body onload="runPatientCheck()">
+<div id="p-mon-container"class="p-mon-container">
+
+</div>
 
 </body>
 </html>

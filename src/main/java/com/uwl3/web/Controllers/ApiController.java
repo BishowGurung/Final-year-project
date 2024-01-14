@@ -3,14 +3,22 @@ package com.uwl3.web.Controllers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.uwl3.domain.cache.NewsCache;
+import com.uwl3.domain.dao.Patient;
 import com.uwl3.domain.dao.HealthNews;
+import com.uwl3.domain.dao.PatientRepository;
 import com.uwl3.domain.service.NhsApiService;
+import com.uwl3.sensor.BloodPressureReader;
+import com.uwl3.sensor.BodyTemperatureReader;
+import com.uwl3.sensor.PulseReader;
+import com.uwl3.sensor.RespiratoryReader;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @RestController
@@ -23,6 +31,18 @@ public class ApiController {
 
     @Autowired
     private NhsApiService nhsApiService;
+
+    @Autowired
+    PatientRepository patientRepository;
+    @Autowired
+    BloodPressureReader bloodPressureReader;
+    @Autowired
+    BodyTemperatureReader bodyTemperatureReader;
+    @Autowired
+    PulseReader pulseReader;
+    @Autowired
+    RespiratoryReader respiratoryReader;
+
     @GetMapping(value = "/api/healthnews")
     public String getHealthNews(){
         if (newsCache.getHealthNewsList().isEmpty()){
@@ -87,54 +107,91 @@ public class ApiController {
 
     @GetMapping(value = "/api/patient/")
     public String getPatient(String patientName){
-        Map<String,String> patientList = new HashMap<>();
-        patientList.put("Name","Brian Stuart");
-        patientList.put("Age","59");
-        patientList.put("Gender","Male");
-        patientList.put("Admission date","2023-10-27");
-        patientList.put("Admission Time","12:26:52");
-        patientList.put("Ward","Urology");
-        patientList.put("Bed number","777");
-        patientList.put("PatientID","1023545");
-
-        Map<String,String> patientList2 = new HashMap<>();
-        patientList2.put("Name","Harold Binny");
-        patientList2.put("Age","16");
-        patientList2.put("Gender","Male");
-        patientList2.put("Admission date","2023-11-27");
-        patientList2.put("Admission Time","1:26:52");
-        patientList2.put("Ward","Burn");
-        patientList2.put("Bed number","012");
-        patientList2.put("PatientID","9532000");
-
         JsonArray jsonArray = new JsonArray();
-        jsonArray.add(patientList.toString());
-        jsonArray.add(patientList2.toString());
+
+        List<Patient> patientList = patientRepository.findAll();
+        patientList.forEach(patient -> {
+            Map<String,String> info = new HashMap<>();
+            info.put("Name",patient.getName());
+            info.put("Age",String.valueOf(patient.getAge()));
+            info.put("Gender",patient.getGender());
+            info.put("Admission date",patient.getAdmissionDate());
+            info.put("Admission Time",patient.getAdmissionTime());
+            info.put("Ward",patient.getWard());
+            info.put("Bed number",String.valueOf(patient.getBedNumber()));
+            info.put("PatientID",String.valueOf(patient.getPatientId()));
+            jsonArray.add(info.toString());
+        });
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("patients",jsonArray);
+        return jsonObject.toString();
+
+    }
+
+    @GetMapping(value = "/api/patientDetails/")
+    public String getPatientDetail(String patientId){
+        JsonArray jsonArray = new JsonArray();
+
+        Optional<Patient> patientOptional = patientRepository.findById(Integer.valueOf(patientId));
+        if (patientOptional.isEmpty()){
+            return "";
+        }
+        List<Patient> patientList = Arrays.asList(patientOptional.get());
+        patientList.forEach(patient -> {
+            Map<String,String> info = new HashMap<>();
+            info.put("Name",patient.getName());
+            info.put("Age",String.valueOf(patient.getAge()));
+            info.put("Gender",patient.getGender());
+            info.put("Admission date",patient.getAdmissionDate());
+            info.put("Admission Time",patient.getAdmissionTime());
+            info.put("Ward",patient.getWard());
+            info.put("Bed number",String.valueOf(patient.getBedNumber()));
+            info.put("PatientID",String.valueOf(patient.getPatientId()));
+            jsonArray.add(info.toString());
+        });
+
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("patients",jsonArray);
 
         return jsonObject.toString();
     }
-    @GetMapping(value = "/api/patientDetails/")
-    public String getPatientDetail(String patientId){
-        Map<String,String> patientDetail = new HashMap<>();
-        patientDetail.put("Name","Brian Stuart");
-        patientDetail.put("Age","59");
-        patientDetail.put("Gender","Male");
-        patientDetail.put("AdmissionDate","2023-10-27");
-        patientDetail.put("AdmissionTime","12:26:52");
-        patientDetail.put("Ward","Urology");
-        patientDetail.put("BedNumber","777");
-        patientDetail.put("PatientID","1023545");
+    @GetMapping(value = "/api/patientMonitor")
+    public String getPatientDetail(){
 
-
+        List<Patient> patientList = patientRepository.findAll();
         JsonArray jsonArray = new JsonArray();
-        jsonArray.add(patientDetail.toString());
+
+        patientList.forEach(patient -> {
+            Map<String,String> patientDetail = new HashMap<>();
+            patientDetail.put("Name",patient.getName());
+            patientDetail.put("BloodPressure",bloodPressureReader.getBloodPressure());
+            patientDetail.put("BodyTemperature", bodyTemperatureReader.getBodyTemperature());
+            patientDetail.put("Pulse",pulseReader.getPulse());
+            patientDetail.put("RespiratoryRate", respiratoryReader.getRespiratoryRate());
+            jsonArray.add(patientDetail.toString());
+        });
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("patients",jsonArray);
 
         return jsonObject.toString();
+    }
+
+    @GetMapping(value ="/addPatient",produces="application/json")
+    public void addPatient( String Name,String Age, String Gender, String Ward,String BedNumber){
+        Patient patient = Patient.builder()
+                .patientId((int)Math.random())
+                .name(Name)
+                .age(Integer.valueOf(Age))
+                .gender(Gender)
+                .ward(Ward)
+                .bedNumber(Integer.valueOf(BedNumber))
+                .admissionDate(LocalDate.now().toString())
+                .admissionTime(LocalDate.now().toString())
+                .build();
+        patientRepository.save(patient);
+       // patientRepository.save(patient);
+        log.info("Patient Registered : " + patient.toString());
     }
 
 

@@ -74,4 +74,30 @@ function formatPatientRecord(data){
 }
 function addPatient(){
 
+
+    var Name = document.getElementById("name").value;
+    var Age = document.getElementById("age").value;
+    var Gender = document.getElementById("gender").value;
+    var Ward = document.getElementById("ward").value;
+    var BedNumber = document.getElementById("bedNumber").value;
+
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+            formatPatientRecord(this.responseText)
+        }
+    });
+
+    xhr.open("GET", "http://localhost:8080/addPatient?Name="+Name+"&Age="+Age+ "&Gender="+Gender+"&Ward="+Ward+"&BedNumber="+BedNumber);
+
+    xhr.send();
+    document.getElementById("name").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("gender").value = "";
+    document.getElementById("ward").value = "";
+    document.getElementById("bedNumber").value = "";
+
+
 }
