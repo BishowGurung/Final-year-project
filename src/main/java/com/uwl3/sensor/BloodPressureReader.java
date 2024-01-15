@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class BloodPressureReader {
 
     public String getBloodPressure(){
-        return String.valueOf(((Math.random() * (90 - 65)) + 65)).substring(0,2) + "mm - " + String.valueOf(((Math.random() * (120 - 100)) + 100)).substring(0,2)+"mm";
+        return String.valueOf(((Math.random() * (90 - 65)) + 65)).substring(0,2) + "mm - " + String.valueOf(((Math.random() * (120 - 100)) + 100)).substring(0,3)+"mm";
     }
 }
